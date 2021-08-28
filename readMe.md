@@ -1,11 +1,15 @@
 # NODE-RED 암호화 구현하기
+이 예제에서는 단방향 암호화(SHA512)의 내용만 다루고 있습니다
 
 ## 확장 팔레트 설치를 통한 암호화
 - node-red 예제 소스[/node_red_example/source.json](./node_red_example/source.json)
 
 ## node.js crypto 모듈을 이용한 암호화
 
-#### 기본적으로 node-red는 node.js 위에서 실행되며 node.js의 대부분의 기능들을 사용할 수 있습니다.
+#### 기본적으로 node-red는 node.js 위에서 실행되며 node.js의 대부분의 기능들을 사용할 수 있습니다
+#### 실제 현업에서는 salt를 이용한 암호화를 쓰기 때문에 아래의 내용은 salt를 이용한 암호화 방식입니다 
+#### 기본적인 암호화 방식은 `node-red 예제 소스`[/node_red_example/source.json](./node_red_example/source.json)를 확인하시면 됩니다
+
 1. node를 이용한 암호화 코드 실행하기
     - 실행할 index.js 파일을 생성합니다
     - 아래의 예시 코드를 index.js에 작성합니다
