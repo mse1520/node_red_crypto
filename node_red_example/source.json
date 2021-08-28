@@ -1,0 +1,521 @@
+[
+    {
+        "id": "7d686af9eabab471",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "508e3b90750f8801",
+        "type": "file",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "filename": "C:\\Users\\PC\\Desktop\\pass.json",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "utf8",
+        "x": 730,
+        "y": 480,
+        "wires": [
+            [
+                "f868e8874e7e5dca"
+            ]
+        ]
+    },
+    {
+        "id": "7187498b90e0969a",
+        "type": "file in",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "filename": "C:\\Users\\PC\\Desktop\\pass.json",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "utf8",
+        "allProps": false,
+        "x": 590,
+        "y": 600,
+        "wires": [
+            [
+                "a09639470854947e"
+            ]
+        ]
+    },
+    {
+        "id": "1fee67140abb0403",
+        "type": "debug",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "ff0d29144a6a1c2e",
+        "type": "digest",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "algorithm": "SHA512",
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "27a35eacfe625acb",
+                "576c03eba7e0c2d1"
+            ]
+        ]
+    },
+    {
+        "id": "6452f9e16f94669c",
+        "type": "inject",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "password",
+        "payloadType": "str",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "ff0d29144a6a1c2e"
+            ]
+        ]
+    },
+    {
+        "id": "e5b23152b77c3d69",
+        "type": "debug",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "30c9021215030af0",
+        "type": "debug",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "27a35eacfe625acb",
+        "type": "function",
+        "z": "7d686af9eabab471",
+        "name": "BASE64",
+        "func": "const strHex = msg.payload;\n\nconst buf = [];\nfor (let i = 0; i < strHex.length; i += 2) {\n    const intHex = parseInt(`0x${strHex[i]}${strHex[i + 1]}`, 16);\n    buf.push(intHex);\n}\nconst b64 = Buffer.from(buf).toString('base64');\nmsg.payload = b64;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [
+                "e5b23152b77c3d69"
+            ]
+        ]
+    },
+    {
+        "id": "576c03eba7e0c2d1",
+        "type": "debug",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "272c40417d106c6e",
+        "type": "function",
+        "z": "7d686af9eabab471",
+        "name": "crypto(SHA512)",
+        "func": "const crypto = global.get('crypto');\n\nconst pass = msg.payload;\n\nconst hex = crypto.createHash('sha512')\n    .update(pass)\n    .digest('hex');\nconst base64 = crypto.createHash('sha512')\n    .update(pass)\n    .digest('base64');\n\nmsg.payload = base64;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 240,
+        "wires": [
+            [
+                "30c9021215030af0"
+            ]
+        ]
+    },
+    {
+        "id": "d68257d10d0a5fb4",
+        "type": "function",
+        "z": "7d686af9eabab471",
+        "name": "crypto(SHA512) ver.salt",
+        "func": "const crypto = global.get('crypto');\n\nconst pass = msg.payload;\n\ncrypto.randomBytes(64, (err, buf) => {\n    const salt = buf.toString('base64');\n\n    crypto.pbkdf2(pass, salt, 100000, 64, 'sha512', (err, key) => {\n        const result = {\n            salt,\n            payload: key.toString('base64')\n        };\n        \n        msg.payload = JSON.stringify(result);\n        node.send(msg);\n    });\n});",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 380,
+        "wires": [
+            [
+                "4d9cc44c35d9cb83",
+                "508e3b90750f8801"
+            ]
+        ]
+    },
+    {
+        "id": "4d9cc44c35d9cb83",
+        "type": "debug",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "f868e8874e7e5dca",
+        "type": "debug",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "1ca4dab26e46ea2e",
+        "type": "inject",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "password",
+        "payloadType": "str",
+        "x": 160,
+        "y": 600,
+        "wires": [
+            [
+                "8ac603e0c910e9ad"
+            ]
+        ]
+    },
+    {
+        "id": "8db0b4c20a1d9c96",
+        "type": "inject",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "erroPass",
+        "payloadType": "str",
+        "x": 160,
+        "y": 660,
+        "wires": [
+            [
+                "8ac603e0c910e9ad"
+            ]
+        ]
+    },
+    {
+        "id": "35fdec6b74993e1e",
+        "type": "inject",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "password",
+        "payloadType": "str",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "272c40417d106c6e"
+            ]
+        ]
+    },
+    {
+        "id": "76874372af38c882",
+        "type": "inject",
+        "z": "7d686af9eabab471",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "password",
+        "payloadType": "str",
+        "x": 160,
+        "y": 380,
+        "wires": [
+            [
+                "d68257d10d0a5fb4"
+            ]
+        ]
+    },
+    {
+        "id": "8ac603e0c910e9ad",
+        "type": "function",
+        "z": "7d686af9eabab471",
+        "name": "stored",
+        "func": "flow.set(\"pass\", msg.payload);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 600,
+        "wires": [
+            [
+                "7187498b90e0969a"
+            ]
+        ]
+    },
+    {
+        "id": "a09639470854947e",
+        "type": "function",
+        "z": "7d686af9eabab471",
+        "name": "parse file",
+        "func": "const result = JSON.parse(msg.payload);\nresult.pass = flow.get('pass'); \n\nreturn result;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 680,
+        "wires": [
+            [
+                "6fa686fc9ac6f8f2"
+            ]
+        ]
+    },
+    {
+        "id": "6fa686fc9ac6f8f2",
+        "type": "function",
+        "z": "7d686af9eabab471",
+        "name": "crypto(SHA512) ver.salt check",
+        "func": "const crypto = global.get('crypto');\n\ncrypto.pbkdf2(msg.pass, msg.salt, 100000, 64, 'sha512', (err, key) => {\n    node.send({ payload: msg.payload === key.toString('base64') });\n});",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 680,
+        "wires": [
+            [
+                "1fee67140abb0403"
+            ]
+        ]
+    },
+    {
+        "id": "fc080a966aaa8795",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "확장 팔레트 설치를 통한 암호화",
+        "info": "",
+        "x": 210,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "44c6827bcd95aeed",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "HEX",
+        "info": "",
+        "x": 710,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f65ab2992e565816",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "BASE64",
+        "info": "",
+        "x": 720,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9737c22de673ee25",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "node.js 기능을 이용한 구현",
+        "info": "",
+        "x": 190,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "bb8b14665ab72779",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "salt를 이용한 암호화",
+        "info": "",
+        "x": 170,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ba01a6a0a88e60f5",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "인증 구현",
+        "info": "",
+        "x": 140,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "77bb9a384bce6c8b",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "BASE64",
+        "info": "",
+        "x": 720,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1cb9b8c67b33b1d0",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "salt와 암호화된 pass 저장",
+        "info": "",
+        "x": 710,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "831d014ff8a70cd9",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "입력 pass 임시 저장",
+        "info": "",
+        "x": 370,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "a311f4c5b7af56fc",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "저장된 파일 읽어오기",
+        "info": "",
+        "x": 620,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "4c87a6f7f2aa27f1",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "입력값과 저장된 값 비교",
+        "info": "",
+        "x": 950,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "f42319ccca6c6e9c",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "회원가입",
+        "info": "",
+        "x": 140,
+        "y": 300,
+        "wires": []
+    }
+]
