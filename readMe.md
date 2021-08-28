@@ -6,9 +6,9 @@
 
 ## node.js crypto 모듈을 이용한 암호화
 
-#### 기본적으로 node-red는 node.js 위에서 실행되며 node.js의 대부분의 기능들을 사용할 수 있습니다
-#### 실제 현업에서는 salt를 이용한 암호화를 쓰기 때문에 아래의 내용은 salt를 이용한 암호화 방식입니다 
-#### 기본적인 암호화 방식은 `node-red 예제 소스`[/node_red_example/source.json](./node_red_example/source.json)를 확인하시면 됩니다
+기본적으로 node-red는 node.js 위에서 실행되며 node.js의 대부분의 기능들을 사용할 수 있습니다  
+실제 현업에서는 salt를 이용한 암호화를 쓰기 때문에 아래의 내용은 salt를 이용한 암호화 방식입니다  
+기본적인 암호화 방식은 `node-red 예제 소스`[/node_red_example/source.json](./node_red_example/source.json)를 확인하시면 됩니다  
 
 1. node를 이용한 암호화 코드 실행하기
     - 실행할 index.js 파일을 생성합니다
