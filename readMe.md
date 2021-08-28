@@ -2,6 +2,7 @@
 이 예제에서는 단방향 암호화(SHA512)의 내용만 다루고 있습니다
 
 ## 확장 팔레트 설치를 통한 암호화
+- 설치한 확장 팔레트 `node-red-contrib-crypto-js-dynamic`([flows.nodered.org/node/node-red-contrib-crypto-js-dynamic](https://flows.nodered.org/node/node-red-contrib-crypto-js-dynamic))
 - node-red 예제 소스[/node_red_example/source.json](./node_red_example/source.json)
 
 ## node.js crypto 모듈을 이용한 암호화
