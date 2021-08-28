@@ -138,7 +138,7 @@
         "type": "function",
         "z": "7d686af9eabab471",
         "name": "BASE64",
-        "func": "const strHex = msg.payload;\n\nconst buf = [];\nfor (let i = 0; i < strHex.length; i += 2) {\n    const intHex = parseInt(`0x${strHex[i]}${strHex[i + 1]}`, 16);\n    buf.push(intHex);\n}\nconst b64 = Buffer.from(buf).toString('base64');\nmsg.payload = b64;\nreturn msg;",
+        "func": "const strHex = msg.payload;\n\nconst buf = [];\nfor (let i = 0; i < strHex.length; i += 2) {\n    const intHex = parseInt(`0x${strHex[i]}${strHex[i + 1]}`, 16);\n    buf.push(intHex);\n}\nconst b64 = Buffer.from(buf).toString('base64');\n\nmsg.payload = b64;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
