@@ -17,7 +17,7 @@
         "overwriteFile": "true",
         "encoding": "utf8",
         "x": 730,
-        "y": 480,
+        "y": 580,
         "wires": [
             [
                 "f868e8874e7e5dca"
@@ -36,7 +36,7 @@
         "encoding": "utf8",
         "allProps": false,
         "x": 590,
-        "y": 600,
+        "y": 700,
         "wires": [
             [
                 "a09639470854947e"
@@ -57,7 +57,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1210,
-        "y": 680,
+        "y": 780,
         "wires": []
     },
     {
@@ -67,7 +67,7 @@
         "name": "",
         "algorithm": "SHA512",
         "x": 370,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "27a35eacfe625acb",
@@ -93,7 +93,7 @@
         "payload": "password",
         "payloadType": "str",
         "x": 160,
-        "y": 80,
+        "y": 120,
         "wires": [
             [
                 "ff0d29144a6a1c2e"
@@ -114,7 +114,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 730,
-        "y": 160,
+        "y": 200,
         "wires": []
     },
     {
@@ -130,7 +130,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 730,
-        "y": 240,
+        "y": 280,
         "wires": []
     },
     {
@@ -145,7 +145,7 @@
         "finalize": "",
         "libs": [],
         "x": 540,
-        "y": 160,
+        "y": 200,
         "wires": [
             [
                 "e5b23152b77c3d69"
@@ -166,7 +166,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 730,
-        "y": 80,
+        "y": 120,
         "wires": []
     },
     {
@@ -181,7 +181,7 @@
         "finalize": "",
         "libs": [],
         "x": 400,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "30c9021215030af0"
@@ -200,7 +200,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 380,
+        "y": 480,
         "wires": [
             [
                 "4d9cc44c35d9cb83",
@@ -222,7 +222,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 730,
-        "y": 380,
+        "y": 480,
         "wires": []
     },
     {
@@ -238,7 +238,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 970,
-        "y": 480,
+        "y": 580,
         "wires": []
     },
     {
@@ -259,7 +259,7 @@
         "payload": "password",
         "payloadType": "str",
         "x": 160,
-        "y": 600,
+        "y": 700,
         "wires": [
             [
                 "8ac603e0c910e9ad"
@@ -284,7 +284,7 @@
         "payload": "erroPass",
         "payloadType": "str",
         "x": 160,
-        "y": 660,
+        "y": 760,
         "wires": [
             [
                 "8ac603e0c910e9ad"
@@ -309,7 +309,7 @@
         "payload": "password",
         "payloadType": "str",
         "x": 160,
-        "y": 240,
+        "y": 280,
         "wires": [
             [
                 "272c40417d106c6e"
@@ -334,7 +334,7 @@
         "payload": "password",
         "payloadType": "str",
         "x": 160,
-        "y": 380,
+        "y": 480,
         "wires": [
             [
                 "d68257d10d0a5fb4"
@@ -353,7 +353,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 600,
+        "y": 700,
         "wires": [
             [
                 "7187498b90e0969a"
@@ -372,7 +372,7 @@
         "finalize": "",
         "libs": [],
         "x": 740,
-        "y": 680,
+        "y": 780,
         "wires": [
             [
                 "6fa686fc9ac6f8f2"
@@ -391,7 +391,7 @@
         "finalize": "",
         "libs": [],
         "x": 970,
-        "y": 680,
+        "y": 780,
         "wires": [
             [
                 "1fee67140abb0403"
@@ -405,7 +405,7 @@
         "name": "확장 팔레트 설치를 통한 암호화",
         "info": "",
         "x": 210,
-        "y": 40,
+        "y": 80,
         "wires": []
     },
     {
@@ -415,7 +415,7 @@
         "name": "HEX",
         "info": "",
         "x": 710,
-        "y": 40,
+        "y": 80,
         "wires": []
     },
     {
@@ -425,7 +425,7 @@
         "name": "BASE64",
         "info": "",
         "x": 720,
-        "y": 120,
+        "y": 160,
         "wires": []
     },
     {
@@ -435,7 +435,7 @@
         "name": "node.js 기능을 이용한 구현",
         "info": "",
         "x": 190,
-        "y": 200,
+        "y": 240,
         "wires": []
     },
     {
@@ -445,7 +445,7 @@
         "name": "salt를 이용한 암호화",
         "info": "",
         "x": 170,
-        "y": 340,
+        "y": 440,
         "wires": []
     },
     {
@@ -455,7 +455,7 @@
         "name": "인증 구현",
         "info": "",
         "x": 140,
-        "y": 560,
+        "y": 660,
         "wires": []
     },
     {
@@ -465,7 +465,7 @@
         "name": "BASE64",
         "info": "",
         "x": 720,
-        "y": 200,
+        "y": 240,
         "wires": []
     },
     {
@@ -475,7 +475,7 @@
         "name": "salt와 암호화된 pass 저장",
         "info": "",
         "x": 710,
-        "y": 440,
+        "y": 540,
         "wires": []
     },
     {
@@ -485,7 +485,7 @@
         "name": "입력 pass 임시 저장",
         "info": "",
         "x": 370,
-        "y": 560,
+        "y": 660,
         "wires": []
     },
     {
@@ -495,7 +495,7 @@
         "name": "저장된 파일 읽어오기",
         "info": "",
         "x": 620,
-        "y": 560,
+        "y": 660,
         "wires": []
     },
     {
@@ -505,7 +505,7 @@
         "name": "입력값과 저장된 값 비교",
         "info": "",
         "x": 950,
-        "y": 640,
+        "y": 740,
         "wires": []
     },
     {
@@ -515,7 +515,27 @@
         "name": "회원가입",
         "info": "",
         "x": 140,
-        "y": 300,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "d20b56c3944b5e1b",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "간단한 암호화 테스트",
+        "info": "",
+        "x": 120,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "b080c777fc30aadf",
+        "type": "comment",
+        "z": "7d686af9eabab471",
+        "name": "현업에서 사용가능한 암호화",
+        "info": "",
+        "x": 140,
+        "y": 360,
         "wires": []
     }
 ]
